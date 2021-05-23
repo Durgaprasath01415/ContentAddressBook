@@ -3,7 +3,13 @@ import java.util.Scanner;
 public class AddressBookMain {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
-        AddressBook AddressBook = new AddressBook();
-        AddressBook.add();
+        AddressBook addressBook = new AddressBook();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your choice 1.Add Contact 2.Edit Contact :");
+        int choice = Integer.valueOf(scanner.nextLine());
+        switch (choice) {
+            case 1:addressBook.add();
+            case 2:addressBook.edit();
         }
     }
+}

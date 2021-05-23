@@ -1,6 +1,6 @@
-Contact.java
- Contact
 AddressBook.java
  AddressBook
+Contact.java
+ Contact
 AddressBookMain.java
  AddressBookMain
