@@ -26,7 +26,17 @@ public class AddressBook {
         System.out.println("Enter email : ");
         String email = scanner.nextLine();
 
+
+        contact.setFirstName(firstName);
+        contact.setLastName(lastName);
+        contact.setAddress(address);
+        contact.setCity(city);
+        contact.setState(state);
+        contact.setZip(zip);
+        contact.setPhoneNumber(phoneNumber);
+        contact.setEmail(email);
         System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
 
     }
+
 }
