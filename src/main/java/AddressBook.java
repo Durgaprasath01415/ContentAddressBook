@@ -39,4 +39,41 @@ public class AddressBook {
 
     }
 
+    public boolean edit(){
+        System.out.println("Enter First name");
+        String firstName = scanner.nextLine();
+        if(firstName.matches(contact.getFirstName())){
+            return false;
+        }
+        System.out.println("Which details you have to edit");
+        System.out.println("Press 1 for changing first name");
+        System.out.println("Press 2 for changing last name");
+        System.out.println("Press 3 for changing address");
+        System.out.println("Press 4 for changing city name");
+        System.out.println("Press 5 for changing state name");
+        System.out.println("Press 6 for changing zip");
+        System.out.println("Press 7 for changing phoneNumber");
+        System.out.println("Press 8 for changing email");
+        int choice = Integer.valueOf(scanner.next());
+        switch (choice){
+            case 1: contact.setFirstName(scanner.nextLine());
+                break;
+            case 2: contact.setLastName(scanner.nextLine());
+                break;
+            case 3: contact.setAddress(scanner.nextLine());
+                break;
+            case 4: contact.setCity(scanner.nextLine());
+                break;
+            case 5: contact.setState(scanner.nextLine());
+                break;
+            case 6: contact.setZip(scanner.nextLine());
+                break;
+            case 7: contact.setPhoneNumber(scanner.nextLine());
+                break;
+            case 8: contact.setEmail(scanner.nextLine());
+                break;
+        }
+        return true;
+    }
+
 }
