@@ -1,9 +1,4 @@
-import javax.swing.*;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class AddressBook {
@@ -38,14 +33,6 @@ public class AddressBook {
         contact.setPhoneNumber(phoneNumber);
         contact.setEmail(email);
         System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
-        PrintStream file = null;
-        try {
-            file = new PrintStream("out.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        System.setOut(file);
-        System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
 
     }
     public boolean edit(){
@@ -55,14 +42,14 @@ public class AddressBook {
             return false;
         }
         System.out.println("Which details you have to edit");
-        System.out.println("Press 1 for editing first name");
-        System.out.println("Press 2 for editing last name");
-        System.out.println("Press 3 for editing address");
-        System.out.println("Press 4 for editing city name");
-        System.out.println("Press 5 for editing state name");
-        System.out.println("Press 6 for editing zip");
-        System.out.println("Press 7 for editing phoneNumber");
-        System.out.println("Press 8 for editing email");
+        System.out.println("Press 1 for changing first name");
+        System.out.println("Press 2 for changing last name");
+        System.out.println("Press 3 for changing address");
+        System.out.println("Press 4 for changing city name");
+        System.out.println("Press 5 for changing state name");
+        System.out.println("Press 6 for changing zip");
+        System.out.println("Press 7 for changing phoneNumber");
+        System.out.println("Press 8 for changing email");
         int choice = Integer.valueOf(scanner.next());
         switch (choice){
             case 1: contact.setFirstName(scanner.nextLine());
