@@ -1,5 +1,10 @@
 
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.util.Scanner;
 
 
 public class AddressBook {
@@ -39,10 +44,11 @@ public class AddressBook {
 
     }
 
-    public boolean edit(){
+    public boolean edit() {
+
         System.out.println("Enter First name");
         String firstName = scanner.nextLine();
-        if(firstName.matches(contact.getFirstName())){
+        if (firstName.equals(contact.getFirstName())){
             return false;
         }
         System.out.println("Which details you have to edit");
@@ -54,26 +60,50 @@ public class AddressBook {
         System.out.println("Press 6 for changing zip");
         System.out.println("Press 7 for changing phoneNumber");
         System.out.println("Press 8 for changing email");
+
         int choice = Integer.valueOf(scanner.next());
         switch (choice){
-            case 1: contact.setFirstName(scanner.nextLine());
-                break;
-            case 2: contact.setLastName(scanner.nextLine());
-                break;
-            case 3: contact.setAddress(scanner.nextLine());
-                break;
-            case 4: contact.setCity(scanner.nextLine());
-                break;
-            case 5: contact.setState(scanner.nextLine());
-                break;
-            case 6: contact.setZip(scanner.nextLine());
-                break;
-            case 7: contact.setPhoneNumber(scanner.nextLine());
-                break;
-            case 8: contact.setEmail(scanner.nextLine());
-                break;
+            case 1:contact.setFirstName(scanner.nextLine());break;
+            case 2:contact.setLastName(scanner.nextLine());break;
+            case 3:contact.setAddress(scanner.nextLine());break;
+            case 4:contact.setCity(scanner.nextLine());break;
+            case 5:contact.setState(scanner.nextLine());break;
+            case 6:contact.setZip(scanner.nextLine());break;
+            case 7:contact.setPhoneNumber(scanner.nextLine());break;
+            case 8:contact.setEmail(scanner.nextLine());break;
         }
+        System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
         return true;
     }
 
-}
+    public boolean delete(){
+        System.out.println("Enter first name");
+        String firstName = scanner.nextLine();
+        if (firstName.equals(contact.getFirstName())){
+            return false;
+        }
+        System.out.println("which you want to delete ");
+        System.out.println("Press 1 for delete first name ");
+        System.out.println("Press 2 for delete last name ");
+        System.out.println("Press 3 for delete address ");
+        System.out.println("Press 4 for delete city ");
+        System.out.println("Press 5 for delete state ");
+        System.out.println("Press 6 for delete zip ");
+        System.out.println("Press 7 for delete phoneNumber ");
+        System.out.println("Press 8 for delete email ");
+        int choice = Integer.valueOf(scanner.next());
+        switch (choice){
+            case 1:contact.setFirstName(null);break;
+            case 2:contact.setLastName(null);break;
+            case 3:contact.setAddress(null);break;
+            case 4:contact.setCity(null);break;
+            case 5:contact.setState(null);break;
+            case 6:contact.setZip(null);break;
+            case 7:contact.setPhoneNumber(null);break;
+            case 8:contact.setEmail(null);break;
+        }
+        System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
+        return true;
+        }
+    }
+
