@@ -1,11 +1,15 @@
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook {
     private LinkedList < Contact > addressBookList;
+    private Map < String , Contact > addressBookMap;
     public AddressBook(){
         addressBookList = new LinkedList<>();
+        addressBookMap = new HashMap<>();
     }
     Contact contact;
     Scanner scanner = new Scanner( System.in );
@@ -37,6 +41,7 @@ public class AddressBook {
         contact.setPhoneNumber(phoneNumber);
         contact.setEmail(email);
         addressBookList.add( contact );
+        addressBookMap.put(contact.getFirstName(),contact);
         System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
     }
     //To edit AddressBook
