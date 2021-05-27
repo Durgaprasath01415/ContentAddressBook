@@ -1,7 +1,12 @@
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class AddressBook {
+    private LinkedList < Contact > addressBookList;
+    public AddressBook(){
+        addressBookList = new LinkedList<>();
+    }
     Contact contact;
     Scanner scanner = new Scanner( System.in );
     //To add into AddressBook
@@ -31,6 +36,7 @@ public class AddressBook {
         contact.setZip(zip);
         contact.setPhoneNumber(phoneNumber);
         contact.setEmail(email);
+        addressBookList.add( contact );
         System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
     }
     //To edit AddressBook
