@@ -106,6 +106,7 @@ public class AddressBook {
             case 2:
                 break;
         }
+        scanner.close();
         return true;
     }
 }
