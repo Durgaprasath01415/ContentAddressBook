@@ -1,8 +1,4 @@
-
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
     private LinkedList < Contact > addressBookList;
@@ -13,13 +9,16 @@ public class AddressBook {
     }
     Contact contact;
     Scanner scanner = new Scanner( System.in );
+    Set <String> set = new LinkedHashSet();
     //To add into AddressBook
     public void add() {
         contact = new Contact();
         System.out.println("Enter first name: ");
         String firstName = scanner.nextLine();
+        set.add(firstName);
         System.out.println("Enter last name: ");
         String lastName = scanner.nextLine();
+        set.add(lastName);
         System.out.println("Enter address : ");
         String address = scanner.nextLine();
         System.out.println("Enter city : ");
@@ -42,7 +41,11 @@ public class AddressBook {
         contact.setEmail(email);
         addressBookList.add( contact );
         addressBookMap.put(contact.getFirstName(),contact);
-        System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
+        Iterator itr = addressBookList.iterator();
+        while (itr.hasNext()){
+            System.out.println(itr.next());
+        }
+        //System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
     }
     //To edit AddressBook
     public boolean edit() {
@@ -63,28 +66,36 @@ public class AddressBook {
         int choice = Integer.valueOf(scanner.next());
         switch (choice) {
             case 1:
-                contact.setFirstName(scanner.nextLine());
+                contact.setFirstName(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 2:
-                contact.setLastName(scanner.nextLine());
+                contact.setLastName(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 3:
-                contact.setAddress(scanner.nextLine());
+                contact.setAddress(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 4:
-                contact.setCity(scanner.nextLine());
+                contact.setCity(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 5:
-                contact.setState(scanner.nextLine());
+                contact.setState(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 6:
-                contact.setZip(scanner.nextLine());
+                contact.setZip(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 7:
-                contact.setPhoneNumber(scanner.nextLine());
+                contact.setPhoneNumber(scanner.next());
+                addressBookList.add(contact);
                 break;
             case 8:
-                contact.setEmail(scanner.nextLine());
+                contact.setEmail(scanner.next());
+                addressBookList.add(contact);
                 break;
         }
         System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
@@ -100,7 +111,7 @@ public class AddressBook {
                 System.out.println("Enter first Name to delete");
                 String firstName2 = scanner.next();
                 if (contact != null && firstName2.equals(contact.getFirstName())) {
-                    contact = null;
+                    addressBookList.removeAll(addressBookList);
                 }
                 break;
             case 2:
@@ -110,4 +121,3 @@ public class AddressBook {
         return true;
     }
 }
-
