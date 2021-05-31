@@ -5,7 +5,7 @@ public class AddressBookMain {
         System.out.println("Welcome to Address Book Program");
         AddressBook addressBook = new AddressBook();
         Scanner scanner = new Scanner(System.in);
-        System.out.println(" Enter your choice 1.Add Contact 2.Edit 3.Delete : ");
+        System.out.println(" Enter your choice 1.Add Contact 2.Edit 3.Delete 4.Search: ");
         int choice = Integer.valueOf(scanner.nextLine());
             switch (choice) {
                 case 1:
