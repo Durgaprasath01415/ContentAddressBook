@@ -48,7 +48,13 @@ public class AddressBook {
         public boolean edit () {
             System.out.println("Enter First name for editing");
             String firstName = scanner.nextLine();
-            if(!firstName.equals(addressBookMap.values())) {
+            Contact person = null;
+            Collection<Contact> values = addressBookMap.values();
+            for(Contact contact : values) {
+                if (contact.getFirstName().equals(firstName))
+                    person = contact;
+                }
+            if(person == null) {
                return false;
             }
             System.out.println("Edit Menu which details you have to edit");
@@ -63,39 +69,39 @@ public class AddressBook {
             int choice = Integer.valueOf(scanner.next());
             switch (choice) {
                 case 1:
-                    contact.setFirstName(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    person.setFirstName(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 2:
-                    contact.setLastName(scanner.next());
-                    addressBookMap.put(contact.getLastName(), contact);
+                    person.setLastName(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 3:
-                    contact.setAddress(scanner.next());
-                    addressBookMap.put(contact.getAddress(), contact);
+                    person.setAddress(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 4:
-                    contact.setCity(scanner.next());
-                    addressBookMap.put(contact.getCity(), contact);
+                    person.setCity(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 5:
-                    contact.setState(scanner.next());
-                    addressBookMap.put(contact.getState(), contact);
+                    person.setState(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 6:
-                    contact.setZip(scanner.next());
-                    addressBookMap.put(contact.getZip(), contact);
+                    person.setZip(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 7:
-                    contact.setPhoneNumber(scanner.next());
-                    addressBookMap.put(contact.getPhoneNumber(), contact);
+                    person.setPhoneNumber(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
                 case 8:
-                    contact.setEmail(scanner.next());
-                    addressBookMap.put(contact.getEmail(), contact);
+                    person.setEmail(scanner.next());
+                    addressBookMap.put(person.getFirstName(), person);
                     break;
             }
-            System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
+            System.out.println("Firstname : " + person.getFirstName() + "\nLastname : " + person.getLastName() + "\nAddress : " + person.getAddress() + "\nCity : " + person.getCity() + "\nState : " + person.getState() + "\nZip : " + person.getZip() + "\nPhonenumber : " + person.getPhoneNumber() + "\nEmail : " + person.getEmail());
             return true;
         }
 
