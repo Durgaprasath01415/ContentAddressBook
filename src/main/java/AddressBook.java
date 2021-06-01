@@ -3,11 +3,12 @@ import java.util.*;
 public class AddressBook {
     private Map<String, Contact> addressBookMap = new HashMap<>();
     private Map<String, String> dictionary = new HashMap<>();
-        Contact contact = new Contact();
+        Contact contact;
         Scanner scanner = new Scanner(System.in);
-
+        int count = 0;
         //To add into AddressBook
         public void add () {
+            contact = new Contact();
             System.out.println("Enter first name: ");
             String firstName = scanner.nextLine();
             System.out.println("Enter last name: ");
@@ -32,21 +33,23 @@ public class AddressBook {
             contact.setZip(zip);
             contact.setPhoneNumber(phoneNumber);
             contact.setEmail(email);
-            addressBookMap.put(contact.getFirstName(), contact);
-            dictionary.put(contact.getFirstName(), city);
+            addressBookMap.put(contact.getFirstName(),contact);
             for (Map.Entry m : addressBookMap.entrySet()) {
-                System.out.println(m.getKey() + " " + m.getValue());
-                for (Map.Entry d : dictionary.entrySet()) {
-                    System.out.println(d.getKey() + " " + d.getValue());
-                }
+                System.out.println("AddressBook Key :" +m.getKey() + " " + " Values : " + m.getValue());
             }
+            dictionary.put(contact.getFirstName(), city);
+            for (Map.Entry d : dictionary.entrySet()) {
+               System.out.println("Dictionary Key : " + d.getKey() + " " + " Value : " + d.getValue());
+            }
+            System.out.println(dictionary.size());
         }
+
         
         //To edit AddressBook
         public boolean edit () {
             System.out.println("Enter First name for editing");
             String firstName = scanner.nextLine();
-            if (!firstName.equals(contact.getFirstName())) {
+            if (!firstName.equals(addressBookMap.values())) {
                 return false;
             }
             System.out.println("Edit Menu which details you have to edit");
@@ -99,7 +102,6 @@ public class AddressBook {
 
         //To delete AddressBook
         public boolean delete () {
-            System.out.println("Delete Menu");
             System.out.println("press 1 for delete");
             System.out.println("press 2 exit");
             int choice = Integer.valueOf(scanner.next());
@@ -119,15 +121,15 @@ public class AddressBook {
 
         //To search a contact by City name
         public String search () {
-            System.out.println("Search Menu");
-            System.out.println("Enter the City name to search");
-            String cityName = scanner.next();
-            Collection<Contact> values = addressBookMap.values();
-            values.forEach(addressBookMap -> {
-                if (addressBookMap.getCity().equals(cityName)) {
-                    System.out.println(addressBookMap.getFirstName());
-                }
-            });
-            return cityName;
+            System.out.println("Enter the city name to search");
+                    String cityName = scanner.next();
+                    Collection<Contact> values = addressBookMap.values();
+                    values.forEach(addressBookMap -> {
+                        if (addressBookMap.getFirstName().equals(cityName)) {
+                            System.out.println(addressBookMap.getFirstName());
+                        }
+                    });
+        return cityName;
         }
+
     }
