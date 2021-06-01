@@ -5,7 +5,7 @@ public class AddressBook {
     private Map<String, String> dictionary = new HashMap<>();
         Contact contact;
         Scanner scanner = new Scanner(System.in);
-        int count = 0;
+
         //To add into AddressBook
         public void add () {
             contact = new Contact();
@@ -41,16 +41,15 @@ public class AddressBook {
             for (Map.Entry d : dictionary.entrySet()) {
                System.out.println("Dictionary Key : " + d.getKey() + " " + " Value : " + d.getValue());
             }
-            System.out.println(dictionary.size());
+            System.out.println("Number of contact with city : " + dictionary.size());
         }
 
-        
         //To edit AddressBook
         public boolean edit () {
             System.out.println("Enter First name for editing");
             String firstName = scanner.nextLine();
-            if (!firstName.equals(addressBookMap.values())) {
-                return false;
+            if(!firstName.equals(addressBookMap.values())) {
+               return false;
             }
             System.out.println("Edit Menu which details you have to edit");
             System.out.println("Press 1 for changing first name");
@@ -73,27 +72,27 @@ public class AddressBook {
                     break;
                 case 3:
                     contact.setAddress(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    addressBookMap.put(contact.getAddress(), contact);
                     break;
                 case 4:
                     contact.setCity(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    addressBookMap.put(contact.getCity(), contact);
                     break;
                 case 5:
                     contact.setState(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    addressBookMap.put(contact.getState(), contact);
                     break;
                 case 6:
                     contact.setZip(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    addressBookMap.put(contact.getZip(), contact);
                     break;
                 case 7:
                     contact.setPhoneNumber(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    addressBookMap.put(contact.getPhoneNumber(), contact);
                     break;
                 case 8:
                     contact.setEmail(scanner.next());
-                    addressBookMap.put(contact.getFirstName(), contact);
+                    addressBookMap.put(contact.getEmail(), contact);
                     break;
             }
             System.out.println("Firstname : " + contact.getFirstName() + "\nLastname : " + contact.getLastName() + "\nAddress : " + contact.getAddress() + "\nCity : " + contact.getCity() + "\nState : " + contact.getState() + "\nZip : " + contact.getZip() + "\nPhonenumber : " + contact.getPhoneNumber() + "\nEmail : " + contact.getEmail());
@@ -125,11 +124,10 @@ public class AddressBook {
                     String cityName = scanner.next();
                     Collection<Contact> values = addressBookMap.values();
                     values.forEach(addressBookMap -> {
-                        if (addressBookMap.getFirstName().equals(cityName)) {
+                        if (addressBookMap.getCity().equals(cityName)) {
                             System.out.println(addressBookMap.getFirstName());
                         }
                     });
         return cityName;
         }
-
     }
