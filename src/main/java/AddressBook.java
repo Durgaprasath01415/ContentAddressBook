@@ -142,8 +142,11 @@ public class AddressBook {
         System.out.println("Enter the city name to search");
         String cityName = scanner.next();
         Collection<Contact> values = addressBookMap.values();
-        List<Contact> ContactFromCity = values.stream().filter(Names -> (Names.getCity().equals(cityName))).collect(Collectors.toList());
-        ContactFromCity.forEach(System.out::println);
+        List<Contact> contactFromCity = values.stream().filter(Names -> (Names.getCity().equals(cityName))).collect(Collectors.toList());
+        contactFromCity.forEach(System.out::println);
+        System.out.println("Result of search" + contactFromCity);
+        long countOfPerson = values.stream().filter(Names -> (Names.getCity().equals(cityName))).count();
+        System.out.println("Count of Person with city : " + countOfPerson);
         return true;
     }
 }
