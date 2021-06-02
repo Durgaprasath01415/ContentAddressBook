@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class AddressBook {
     private Map<String, Contact> addressBookMap = new HashMap<>();
@@ -129,15 +130,12 @@ public class AddressBook {
     }
 
     //To search a contact by City name
-    public String search () {
+    public boolean search () {
         System.out.println("Enter the city name to search");
         String cityName = scanner.next();
         Collection<Contact> values = addressBookMap.values();
-        values.forEach(addressBookMap -> {
-            if (addressBookMap.getCity().equals(cityName)) {
-                System.out.println(addressBookMap.getFirstName());
-            }
-        });
-        return cityName;
+        List<Contact> ContactFromCity = values.stream().filter(Names -> (Names.getCity().equals(cityName))).collect(Collectors.toList());
+        ContactFromCity.forEach(System.out::println);
+        return true;
     }
 }
