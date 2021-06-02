@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.Predicate;
 
 public class AddressBook {
     private Map<String, Contact> addressBookMap = new HashMap<>();
@@ -9,9 +10,12 @@ public class AddressBook {
     //To add into AddressBook
     public void add () {
         contact = new Contact();
-        System.out.println("Enter first name : ");
+        List<Contact> contactList = new LinkedList<>();
+        System.out.println("Enter first name: ");
         String firstName = scanner.nextLine();
-        System.out.println("Enter last name : ");
+        Predicate<Contact> predicate = ((contact_List) ->(contact.getFirstName() != contact.getFirstName()));
+        contactList.stream().filter(predicate);
+        System.out.println("Enter last name: ");
         String lastName = scanner.nextLine();
         System.out.println("Enter address : ");
         String address = scanner.nextLine();
