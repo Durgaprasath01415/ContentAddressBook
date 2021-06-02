@@ -9,9 +9,9 @@ public class AddressBook {
     //To add into AddressBook
     public void add () {
         contact = new Contact();
-        System.out.println("Enter first name: ");
+        System.out.println("Enter first name : ");
         String firstName = scanner.nextLine();
-        System.out.println("Enter last name: ");
+        System.out.println("Enter last name : ");
         String lastName = scanner.nextLine();
         System.out.println("Enter address : ");
         String address = scanner.nextLine();
