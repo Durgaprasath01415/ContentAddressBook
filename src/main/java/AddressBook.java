@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class AddressBook {
     private Map<String, Contact> addressBookMap = new HashMap<>();
@@ -14,7 +15,7 @@ public class AddressBook {
         List<Contact> contactList = new LinkedList<>();
         System.out.println("Enter first name: ");
         String firstName = scanner.nextLine();
-        Predicate<Contact> predicate = ((contact_List) ->(contact.getFirstName() != contact.getFirstName()));
+        Predicate<Contact> predicate = ((contact_List) ->(contact_List.getFirstName() != contact_List.getFirstName()));
         contactList.stream().filter(predicate);
         System.out.println("Enter last name: ");
         String lastName = scanner.nextLine();
@@ -38,15 +39,14 @@ public class AddressBook {
         contact.setZip(zip);
         contact.setPhoneNumber(phoneNumber);
         contact.setEmail(email);
-        addressBookMap.put(contact.getFirstName(),contact);
+        addressBookMap.put(contact.getFirstName(), contact);
         for (Map.Entry m : addressBookMap.entrySet()) {
             System.out.println("AddressBook Key :" +m.getKey() + " " + " Values : " + m.getValue());
         }
         dictionary.put(contact.getFirstName(), city);
-        for (Map.Entry d : dictionary.entrySet()) {
-            System.out.println("Dictionary Key : " + d.getKey() + " " + " Value : " + d.getValue());
-        }
-        System.out.println("Number of contact with city : " + dictionary.size());
+        Collection<String> values = dictionary.values();
+        List<String> cityName = values.stream().collect(Collectors.toList());
+        System.out.println("Dictionary Of Contact with city : " + cityName);
     }
 
     //To edit AddressBook
@@ -74,34 +74,42 @@ public class AddressBook {
         int choice = Integer.valueOf(scanner.next());
         switch (choice) {
             case 1:
+                System.out.println("Enter the firstName");
                 person.setFirstName(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 2:
+                System.out.println("Enter the lastName");
                 person.setLastName(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 3:
+                System.out.println("Enter the Address");
                 person.setAddress(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 4:
+                System.out.println("Enter the city");
                 person.setCity(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 5:
+                System.out.println("Enter the state");
                 person.setState(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 6:
+                System.out.println("Enter the Zip");
                 person.setZip(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 7:
+                System.out.println("Enter the Phone Number");
                 person.setPhoneNumber(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
             case 8:
+                System.out.println("Enter the email");
                 person.setEmail(scanner.next());
                 addressBookMap.put(person.getFirstName(), person);
                 break;
