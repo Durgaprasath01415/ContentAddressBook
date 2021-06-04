@@ -4,9 +4,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AddressBook {
-    private Map<String, Contact> addressBookMap = new HashMap<>();
+    private List<Contact> addressBookMap = new LinkedList<>();
     private Map<String, String> dictionary = new HashMap<>();
     Contact contact;
+    List<Contact> contactList = new LinkedList<>();
     Scanner scanner = new Scanner(System.in);
 
     //To add into AddressBook
@@ -39,14 +40,18 @@ public class AddressBook {
         contact.setZip(zip);
         contact.setPhoneNumber(phoneNumber);
         contact.setEmail(email);
-        addressBookMap.put(contact.getFirstName(), contact);
-        for (Map.Entry m : addressBookMap.entrySet()) {
-            System.out.println("AddressBook Key :" +m.getKey() + " " + " Values : " + m.getValue());
-        }
+        addressBookMap.add(contact);
+//        Collection<Contact> bookValues = addressBookMap.values();
+        //List<Contact> contactBook = bookValues.stream().collect(Collectors.toList());
+//        Stream<Contact> sortOfAddressBook = bookValues.stream().sorted();
+//        sortOfAddressBook.forEach(System.out::println);
+            System.out.println(addressBookMap);
+
         dictionary.put(contact.getFirstName(), city);
         Collection<String> values = dictionary.values();
         List<String> cityName = values.stream().collect(Collectors.toList());
         System.out.println("Dictionary Of Contact with city : " + cityName);
+
     }
 
     //To edit AddressBook
@@ -54,7 +59,7 @@ public class AddressBook {
         System.out.println("Enter First name for editing");
         String firstName = scanner.nextLine();
         Contact person = null;
-        Collection<Contact> values = addressBookMap.values();
+        Collection<Contact> values = addressBookMap;
         for(Contact contact : values) {
             if (contact.getFirstName().equals(firstName))
                 person = contact;
@@ -76,43 +81,36 @@ public class AddressBook {
             case 1:
                 System.out.println("Enter the firstName");
                 person.setFirstName(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
+                addressBookMap.add(person);
                 break;
             case 2:
                 System.out.println("Enter the lastName");
                 person.setLastName(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
             case 3:
                 System.out.println("Enter the Address");
                 person.setAddress(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
             case 4:
                 System.out.println("Enter the city");
                 person.setCity(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
             case 5:
                 System.out.println("Enter the state");
                 person.setState(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
             case 6:
                 System.out.println("Enter the Zip");
                 person.setZip(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
             case 7:
                 System.out.println("Enter the Phone Number");
                 person.setPhoneNumber(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
             case 8:
                 System.out.println("Enter the email");
                 person.setEmail(scanner.next());
-                addressBookMap.put(person.getFirstName(), person);
-                break;
+                addressBookMap.add(person);                break;
         }
         System.out.println("Firstname : " + person.getFirstName() + "\nLastname : " + person.getLastName() + "\nAddress : " + person.getAddress() + "\nCity : " + person.getCity() + "\nState : " + person.getState() + "\nZip : " + person.getZip() + "\nPhonenumber : " + person.getPhoneNumber() + "\nEmail : " + person.getEmail());
         return true;
@@ -141,12 +139,42 @@ public class AddressBook {
     public boolean search () {
         System.out.println("Enter the city name to search");
         String cityName = scanner.next();
-        Collection<Contact> values = addressBookMap.values();
-        List<Contact> contactFromCity = values.stream().filter(Names -> (Names.getCity().equals(cityName))).collect(Collectors.toList());
-        contactFromCity.forEach(System.out::println);
-        System.out.println("Result of search" + contactFromCity);
-        long countOfPerson = values.stream().filter(Names -> (Names.getCity().equals(cityName))).count();
-        System.out.println("Count of Person with city : " + countOfPerson);
+        List<Contact> values = addressBookMap;
+        values.forEach(addressBookMap -> {
+            if(addressBookMap.getCity().equals(cityName)){
+                System.out.println(addressBookMap.getFirstName());
+            }
+        });
         return true;
+    }
+
+    public void sort()
+    {
+        System.out.println("Sort By...\n"
+                + "1: First Name\n"
+                + "2: City\n"
+                + "3: State\n"
+                + "4: Zip Code\n"
+                + "5: Back");
+        int choice = scanner.nextInt();
+        switch (choice)
+        {
+            case 1:
+                Sort.sortByName((addressBookMap));
+                break;
+            case 2 :
+                Sort.sortByCity((addressBookMap));
+                break;
+            case 3 :
+                Sort.sortByState((addressBookMap));
+                break;
+            case 4 :
+                Sort.sortByZip((addressBookMap));
+                break;
+            case 5 :
+                return;
+            default:
+                System.out.println("Please Enter Valid Option...");
+        }
     }
 }
