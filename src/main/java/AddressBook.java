@@ -152,7 +152,6 @@ public class AddressBook {
     {
         System.out.println("Sort By...\n"
                 + "First Name\n");
-
         int choice = scanner.nextInt();
         Sort.sortByName((addressBookMap));
         }
