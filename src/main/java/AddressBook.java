@@ -151,8 +151,30 @@ public class AddressBook {
     public void sort()
     {
         System.out.println("Sort By...\n"
-                + "First Name\n");
+                + "1: First Name\n"
+                + "2: City\n"
+                + "3: State\n"
+                + "4: Zip Code\n"
+                + "5: Back");
         int choice = scanner.nextInt();
-        Sort.sortByName((addressBookMap));
+        switch (choice)
+        {
+            case 1:
+                Sort.sortByName((addressBookMap));
+                break;
+            case 2 :
+                Sort.sortByCity((addressBookMap));
+                break;
+            case 3 :
+                Sort.sortByState((addressBookMap));
+                break;
+            case 4 :
+                Sort.sortByZip((addressBookMap));
+                break;
+            case 5 :
+                return;
+            default:
+                System.out.println("Please Enter Valid Option...");
         }
     }
+}
