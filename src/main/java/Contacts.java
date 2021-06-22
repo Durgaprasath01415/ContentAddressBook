@@ -1,4 +1,4 @@
-public class Contact {
+public class Contacts {
     private String fName;
     private String lName;
     private String address;
@@ -8,7 +8,7 @@ public class Contact {
     private Long phone;
     private String email;
 
-    public Contact(String fName, String lName, String address, String city, String state, Long zip, Long phone,
+    public Contacts(String fName, String lName, String address, String city, String state, Long zip, Long phone,
                     String email) {
         this.fName = fName;
         this.lName = lName;
@@ -68,10 +68,10 @@ public class Contact {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (!(obj instanceof Contact))
+        if (!(obj instanceof Contacts))
             return false;
 
-        Contact other = (Contact) obj;
+        Contacts other = (Contacts) obj;
         if (!(fName.equalsIgnoreCase(other.getfName())))
             return false;
         if (!(lName.equalsIgnoreCase(other.getlName())))
