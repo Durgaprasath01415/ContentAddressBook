@@ -1,36 +1,31 @@
-import java.util.Comparator;
-
 public class Contact {
-    private String firstName;
-    private String lastName;
+    private String fName;
+    private String lName;
     private String address;
     private String city;
     private String state;
-    private String zip;
-    private String phoneNumber;
+    private Long zip;
+    private Long phone;
     private String email;
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
+    public Contact(String fName, String lName, String address, String city, String state, Long zip, Long phone,
+                    String email) {
+        this.fName = fName;
+        this.lName = lName;
         this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
     public String getCity() {
@@ -49,85 +44,61 @@ public class Contact {
         this.state = state;
     }
 
-    public String getZip() {
+    public String getlName() {
+        return lName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Long getZip() {
         return zip;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String  phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public Long getPhone() {
+        return phone;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Contact))
+            return false;
+
+        Contact other = (Contact) obj;
+        if (!(fName.equalsIgnoreCase(other.getfName())))
+            return false;
+        if (!(lName.equalsIgnoreCase(other.getlName())))
+            return false;
+        if (!(address.equalsIgnoreCase(other.getAddress())))
+            return false;
+        if (!(city.equalsIgnoreCase(other.getCity())))
+            return false;
+        if (!state.equalsIgnoreCase(other.getState()))
+            return false;
+        if (!zip.equals(other.getZip()))
+            return false;
+        if (!(phone.equals(other.getPhone())))
+            return false;
+        return email.equals(other.getEmail());
     }
-
-    public static Comparator<Contact> firstNameSorting = new Comparator<Contact>() {
-        @Override
-        public int compare(Contact p1, Contact p2)
-        {
-            String firstName1 = p1.getFirstName();
-            String firstName2 = p2.getFirstName();
-            // ascending order
-            return firstName1.compareToIgnoreCase(firstName2);
-        }
-    };
-
-    // Sort By City
-    public static Comparator<Contact> citySorting = new Comparator<Contact>() {
-        @Override
-        public int compare(Contact p1, Contact p2)
-        {
-            String city1 = p1.getCity();
-            String city2 = p2.getCity();
-            // ascending order
-            return city1.compareToIgnoreCase(city2);
-        }
-    };
-    // Sort By State
-    public static Comparator<Contact> stateSorting = new Comparator<Contact>() {
-        @Override
-        public int compare(Contact p1, Contact p2)
-        {
-            String state1 = p1.getState();
-            String state2 = p2.getState();
-            // ascending order
-            return state1.compareToIgnoreCase(state2);
-        }
-    };
-    // Sort By Zip
-    public static Comparator<Contact> zipSorting = new Comparator<Contact>() {
-        @Override
-        public int compare(Contact p1, Contact p2)
-        {
-            String zip1 = p1.getZip();
-            String zip2 = p2.getZip();
-            // ascending order
-            return zip1.compareToIgnoreCase(zip2);
-        }
-    };
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+        return "Contacts{" +
+                "fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", zip='" + zip + '\'' +
-                ", phoneNumber=" + phoneNumber +
+                ", zip=" + zip +
+                ", phone=" + phone +
                 ", email='" + email + '\'' +
                 '}';
     }
