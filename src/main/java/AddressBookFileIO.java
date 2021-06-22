@@ -9,7 +9,6 @@ public class AddressBookFileIO {
         try {
             //create new BufferedWriter for the output file
             bf = new BufferedWriter(new FileWriter(file));
-
             //iterate map entries
             for (Map.Entry<String, AddressBook> entry : addressBook.entrySet()) {
                 //put key and value separated by a colon
@@ -24,7 +23,6 @@ public class AddressBookFileIO {
             e.printStackTrace();
         }
     }
-
     //  public List<Contacts> readData() {
     public static Map<String,  String> readData() {
         Map<String, String> mapFileContents = new HashMap<>();
@@ -48,7 +46,6 @@ public class AddressBookFileIO {
                 String fname = parts[1].trim();
                 mapFileContents.put(bookName, fname);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
